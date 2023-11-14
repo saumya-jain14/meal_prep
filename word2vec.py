@@ -12,7 +12,6 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from collections import defaultdict
 
-# import config
 from ingredient_parser import ingredient_parser
 
 
@@ -22,8 +21,8 @@ def get_and_sort_corpus(data):
     """
     corpus_sorted = []
     for doc in data.parsed.values:
-        print("doc type", type(doc))
-        # doc.sort()
+        # print("doc type", type(doc))
+        doc.sort()
         corpus_sorted.append(doc)
     return corpus_sorted
 
