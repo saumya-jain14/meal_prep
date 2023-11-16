@@ -53,7 +53,7 @@ def main():
         recipe["url"] = recipe.apply(
             lambda row: make_clickable(row["recipe"], row["url"]), axis=1
         )
-        recipe_display = recipe[["recipe", "url", "ingredients"]]
+        recipe_display = recipe[["recipe", "url", "ingredients", "score"]]
         session_state.recipe_display = recipe_display.to_html(escape=False)
         session_state.recipes = recipe.recipe.values.tolist()
         # session_state.model_computed = True

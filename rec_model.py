@@ -60,10 +60,14 @@ def rec_sys(ingredients, N=5):
         ingredients_parsed = ingredient_parser([ingredients])
     
     # use our pretrained tfidf model to encode our input ingredients
-    ingredients_tfidf = tfidf.transform([ingredients_parsed])
+    print(ingredients_parsed)
+    # ingredients_tfidf = tfidf.transform([ingredients_parsed])
+    ingredients_tfidf = tfidf.transform([ingredients])
+    print(ingredients_tfidf)
 
     # calculate cosine similarity between actual recipe ingreds and test ingreds
     cos_sim = map(lambda x: cosine_similarity(ingredients_tfidf, x), tfidf_encodings)
+
     scores = list(cos_sim)
 
     # Filter top N recommendations 
@@ -72,6 +76,8 @@ def rec_sys(ingredients, N=5):
 
 if __name__ == "__main__":
     # test ingredients
-    test_ingredients = "penne, eggs, bacon, courgettes"
+    # test_ingredients = "eggs, Parmesan cheese , freshly ground black pepper, leftover cooked, pasta, extra virgin olive oil"
+    test_ingredients = "eggs,freshly ground black pepper, leftover cooked, pasta, extra virgin olive oil"
+
     recs = rec_sys(test_ingredients)
     print(recs)
